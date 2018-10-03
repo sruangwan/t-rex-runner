@@ -1,31 +1,7 @@
 import sys, pygame
 from datetime import timedelta
-pygame.init()
 
-size = width, height = 840, 340
-speed = [0, 0]
-black = 255, 255, 255
-
-screen = pygame.display.set_mode(size)
-
-player = pygame.image.load("sprites/dinopixel.png")
-background = pygame.image.load("sprites/background.png")
-player = pygame.transform.scale(player, (100, 100))
-playerrect = player.get_rect()
-playerrect.y = 180
-playerrect.x = 25
-currentleg = "LEFT"
-myfont = pygame.font.SysFont("monospace", 25)
-
-clock = pygame.time.Clock()
-minutes = 0
-seconds = 0
-milliseconds = 0
-gamestart = 0
-restart = 0
-ranking = []
-
-while 1:
+def game():
     timelabel = myfont.render("{}:{}.{}".format(minutes, seconds, milliseconds), 1, (0,0,0))
     bestlabel = myfont.render("The Fastest", 1, (0,0,0))
 
@@ -101,3 +77,31 @@ while 1:
     screen.blit(timelabel, (20, 20))
     screen.blit(player, playerrect)
     pygame.display.flip()
+
+if __name__ == '__main__':
+    pygame.init()
+
+    size = width, height = 840, 340
+    speed = [0, 0]
+    black = 255, 255, 255
+
+    screen = pygame.display.set_mode(size)
+
+    player = pygame.image.load("sprites/dinopixel.png")
+    background = pygame.image.load("sprites/background.png")
+    player = pygame.transform.scale(player, (100, 100))
+    playerrect = player.get_rect()
+    playerrect.y = 180
+    playerrect.x = 25
+    currentleg = "LEFT"
+    myfont = pygame.font.SysFont("monospace", 25)
+
+    clock = pygame.time.Clock()
+    minutes = 0
+    seconds = 0
+    milliseconds = 0
+    gamestart = 0
+    restart = 0
+    ranking = []
+
+    while True: game()
